@@ -118,12 +118,13 @@ Python: 3.8+
 ### 1. Datasets
 
 
-|Dataset	Students |	Interactions|	Skills |	Avg.Len|	Max.Len|	Correct Rate|	Reaction Time|
-|---------|-----------|----------|-----------|-------------|
-|Assist2009	|4,151	|325,637	|110	|78.4	|1261 	|65.8%|	Y|
-|Assist2017|	1,709	|942,816|	102 |	551.7	|3057	|37.3%|	Y|
-|Assist2015	|19,840	|683,801	|100|	34.5|	618	|73.2%	|N|
-|Statics	|282|	189,297|	1223	|568.5	|1181	|76.5% |	N|
+ASSISTments 2009: Collected from the ASSISTments online learning platform (math) in 2009, this dataset contains 325,637 interactions from 4,151 students, covering 110 knowledge components and 16,891 items. The average interaction sequence length is 78.4 (with a maximum of 1,261), and the overall correctness rate is 65.8\%. Response-time information is available, facilitating analysis of temporal factors in knowledge-state modeling.
+	
+ASSISTments 2017: Also derived from ASSISTments math learning logs, this dataset is larger in interaction volume, with 942,816 interactions from 1,709 students, covering 102 knowledge components and 3,162 items. It features substantially longer sequences (average 551.7, maximum 3,057) but a lower correctness rate (37.3\%), suggesting higher task difficulty. Response-time information is also included.
+	
+ASSISTments 2015: Focusing on fundamental mathematics, this dataset has the largest number of students (19,840) and contains 683,801 interactions, covering 100 knowledge components. Sequences are relatively short (average 34.5, maximum 618), and the correctness rate is 73.2\%. Response-time records are not provided, making it suitable for evaluating performance under short-sequence, high-accuracy settings.
+	
+STATICS: Collected from interactions in a university-level physics course, this dataset includes 189,297 interactions from 282 students and covers a wide range of knowledge components (1,223). The average sequence length is 568.5 (maximum 1,181) with a high correctness rate of 76.5\%. No response-time information is available, and the dataset is useful for assessing performance in discipline-level KT with long sequences and dense knowledge-component spaces.
 
 
 ### 2. Data Preprocessing
