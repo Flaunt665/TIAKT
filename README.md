@@ -152,10 +152,8 @@ Sequence Processing:
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | n_heads | 8 | Number of attention heads |
-| n_blocks | 1 | Number of Transformer blocks |
 | mem_slots | 8 | Number of neural memory slots |
 | persistent_slots | 4 | Number of persistent memory slots |
-| fusion_layers | 1 | Number of fusion layers |
 | final_fc_dim | 512 | Output layer dimension |
 | dropout | 0.05 | Dropout rate |
 
@@ -201,21 +199,14 @@ Transfer Settings:
 #### 8.1 Cold Start Analysis
 ```
 Grouping Criteria:
-- Low-frequency skills: Occurrences in training set < 100
-- Medium-frequency skills: 100 ≤ occurrences < 1000
-- High-frequency skills: Occurrences ≥ 1000
+
+- Extremely low (< 50)
+-  Low (50–200)
+- Medium (200–500)
+- High (> 500)
 ```
 
-#### 8.2 Sequence Length Analysis
-```
-Groups:
-- Short sequences: 1-50
-- Medium sequences: 51-100
-- Long sequences: 101-150
-- Very long sequences: 151-200
-```
-
-#### 8.3 Position Effect Analysis
+#### 8.2 Position Effect Analysis
 ```
 Groups:
 - Sequence beginning: Position 1-50
@@ -223,12 +214,11 @@ Groups:
 - Sequence end: Position 151-200
 ```
 
-#### 8.4 Difficulty Analysis
+#### 8.3 Difficulty Analysis
 ```
 Grouping based on historical accuracy:
-- Hard problems: Accuracy < 0.4
-- Medium problems: 0.4 ≤ accuracy < 0.7
-- Easy problems: Accuracy ≥ 0.7
+- Hard problems: Accuracy < 0.3
+- Medium problems: 0.3 ≤ accuracy < 0.7
 ```
 
 ### 9. Reproducibility
