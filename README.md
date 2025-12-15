@@ -59,20 +59,6 @@ Input: (questions, answers, problem_ids)
 Output: Probability of correct answer
 ```
 
-## 📁 Project Structure
-
-```
-TIAKT/
-├── pseudocode/
-│   ├── tiakt_pseudocode.py      # Core algorithm pseudocode
-│   └── README.md                # This file
-├── data/
-│   ├── assist2009_pid/          # ASSISTments 2009 dataset
-│   ├── assist2017_pid/          # ASSISTments 2017 dataset
-│   ├── assist2015/              # ASSISTments 2015 dataset
-│   └── statics/                 # Statics 2011 dataset
-└── results/                     # Experimental results
-```
 
 ## 🔬 Key Components
 
