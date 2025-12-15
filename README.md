@@ -166,7 +166,6 @@ Sequence Processing:
 | Max epochs | 50 |
 | Early stopping | 10 epochs |
 | L2 regularization | 1e-5 |
-| Gradient clipping | - |
 | Random seed | 224 |
 
 ### 5. Evaluation Metrics
@@ -189,7 +188,7 @@ Python: 3.8+
 Transfer Settings:
 - Source → Target combinations: 12 pairs (pairwise combinations of 4 datasets)
 - Transfer modes:
-  1. Zero-shot: Direct transfer without training on target dataset
+  1. Zero-shot: Direct transfer without training on the target dataset
   2. Fine-tune: Full parameter fine-tuning
   3. Freeze: Freeze Transformer layers, only fine-tune embedding and output layers
 
