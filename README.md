@@ -111,6 +111,144 @@ GPU: NVIDIA GPU with CUDA support
 Framework: PyTorch
 Python: 3.8+
 
+# TIAKT: Tri-level Interactive Attention Knowledge Tracing
+
+## Experimental Settings
+
+### 1. Datasets
+
+| Dataset | Questions | Problems | Sequences | Avg. Length |
+|---------|-----------|----------|-----------|-------------|
+| ASSISTments2009 | 110 | 16,891 | ~4,000 | ~200 |
+| ASSISTments2017 | 102 | 3,162 | ~1,700 | ~200 |
+| ASSISTments2015 | 100 | - | ~19,000 | ~200 |
+| Statics2011 | 1,223 | - | ~333 | ~200 |
+
+### 2. Data Preprocessing
+
+```
+Data Format (4 lines per student):
+Line 1: Sequence length
+Line 2: Problem ID sequence (problem_id)
+Line 3: Skill ID sequence (skill_id)  
+Line 4: Answer sequence (0: incorrect, 1: correct)
+
+Split Ratio:
+- Training set: 70%
+- Validation set: 15%
+- Test set: 15%
+
+Sequence Processing:
+- Maximum sequence length: 200
+- Filter users with interactions < 3
+- Split long sequences by seqlen
+```
+
+### 3. Model Hyperparameters
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| n_heads | 8 | Number of attention heads |
+| n_blocks | 1 | Number of Transformer blocks |
+| mem_slots | 8 | Number of neural memory slots |
+| persistent_slots | 4 | Number of persistent memory slots |
+| fusion_layers | 1 | Number of fusion layers |
+| final_fc_dim | 512 | Output layer dimension |
+| dropout | 0.05 | Dropout rate |
+
+### 4. Training Settings
+
+| Parameter | Value |
+|-----------|-------|
+| Optimizer | Adam |
+| Learning rate | 5e-4 |
+| Batch size | 24 |
+| Max epochs | 50 |
+| Early stopping | 10 epochs |
+| L2 regularization | 1e-5 |
+| Gradient clipping | - |
+| Random seed | 224 |
+
+### 5. Evaluation Metrics
+
+- **AUC** (Area Under ROC Curve): Primary evaluation metric
+- **Accuracy**: Prediction accuracy
+- **F1 Score**: F1 score
+
+### 6. Hardware Environment
+
+```
+GPU: NVIDIA GPU with CUDA support
+Framework: PyTorch
+Python: 3.8+
+```
+
+### 7. Cross-Task Transfer Experiments
+
+```
+Transfer Settings:
+- Source → Target combinations: 12 pairs (pairwise combinations of 4 datasets)
+- Transfer modes:
+  1. Zero-shot: Direct transfer without training on target dataset
+  2. Fine-tune: Full parameter fine-tuning
+  3. Freeze: Freeze Transformer layers, only fine-tune embedding and output layers
+
+Fine-tuning Settings:
+- Fine-tune epochs: 10
+- Learning rate: 5e-4 (same as pre-training)
+```
+
+### 8. Supplementary Experiments
+
+#### 8.1 Cold Start Analysis
+```
+Grouping Criteria:
+- Low-frequency skills: Occurrences in training set < 100
+- Medium-frequency skills: 100 ≤ occurrences < 1000
+- High-frequency skills: Occurrences ≥ 1000
+```
+
+#### 8.2 Sequence Length Analysis
+```
+Groups:
+- Short sequences: 1-50
+- Medium sequences: 51-100
+- Long sequences: 101-150
+- Very long sequences: 151-200
+```
+
+#### 8.3 Position Effect Analysis
+```
+Groups:
+- Sequence beginning: Position 1-50
+- Sequence middle: Position 51-150
+- Sequence end: Position 151-200
+```
+
+#### 8.4 Difficulty Analysis
+```
+Grouping based on historical accuracy:
+- Hard problems: Accuracy < 0.4
+- Medium problems: 0.4 ≤ accuracy < 0.7
+- Easy problems: Accuracy ≥ 0.7
+```
+
+### 9. Reproducibility
+
+```bash
+# Set random seeds
+np.random.seed(224)
+torch.manual_seed(224)
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+```
+
+---
+
+## License
+
+This code is released for academic research purposes only.
+
 ## 📝 License
 
 This code is released for academic research purposes only.
