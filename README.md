@@ -117,12 +117,14 @@ Python: 3.8+
 
 ### 1. Datasets
 
-| Dataset | Questions | Problems | Sequences | Avg. Length |
+
+|Dataset	Students |	Interactions|	Skills |	Avg.Len|	Max.Len|	Correct Rate|	Reaction Time|
 |---------|-----------|----------|-----------|-------------|
-| ASSISTments2009 | 110 | 16,891 | ~4,000 | ~200 |
-| ASSISTments2017 | 102 | 3,162 | ~1,700 | ~200 |
-| ASSISTments2015 | 100 | - | ~19,000 | ~200 |
-| Statics2011 | 1,223 | - | ~333 | ~200 |
+|Assist2009	|4,151	|325,637	|110	|78.4	|1261 	|65.8%|	Y|
+|Assist2017|	1,709	|942,816|	102 |	551.7	|3057	|37.3%|	Y|
+|Assist2015	|19,840	|683,801	|100|	34.5|	618	|73.2%	|N|
+|Statics	|282|	189,297|	1223	|568.5	|1181	|76.5% |	N|
+
 
 ### 2. Data Preprocessing
 
