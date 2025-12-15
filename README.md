@@ -134,13 +134,13 @@ Line 3: Skill ID sequence (skill_id)
 Line 4: Answer sequence (0: incorrect, 1: correct)
 
 Split Ratio:
-- Training set: 70%
-- Validation set: 15%
-- Test set: 15%
+- Training set: 80%
+- Validation set: 10%
+- Test set: 10%
 
 Sequence Processing:
 - Maximum sequence length: 200
-- Filter users with interactions < 3
+- Filter users with interactions 
 - Split long sequences by seqlen
 ```
 
