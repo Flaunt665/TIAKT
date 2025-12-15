@@ -76,7 +76,7 @@ TIAKT/
 
 ## 🔬 Key Components
 
-### 1. Monotonic Attention (from AKT)
+### 1. Monotonic Attention 
 ```python
 # Position-aware exponential decay
 position_distance = |i - j|
