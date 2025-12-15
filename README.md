@@ -191,10 +191,6 @@ Transfer Settings:
   1. Zero-shot: Direct transfer without training on the target dataset
   2. Fine-tune: Full parameter fine-tuning
   3. Freeze: Freeze Transformer layers, only fine-tune embedding and output layers
-
-Fine-tuning Settings:
-- Fine-tune epochs: 10
-- Learning rate: 5e-4 (same as pre-training)
 ```
 
 ### 8. Supplementary Experiments
