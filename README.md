@@ -65,7 +65,6 @@ Output: Probability of correct answer
 TIAKT/
 ├── pseudocode/
 │   ├── tiakt_pseudocode.py      # Core algorithm pseudocode
-│   ├── EXPERIMENTAL_SETTINGS.md # Experimental configurations
 │   └── README.md                # This file
 ├── data/
 │   ├── assist2009_pid/          # ASSISTments 2009 dataset
