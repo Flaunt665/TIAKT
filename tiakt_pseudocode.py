@@ -88,7 +88,7 @@ class EmbeddingLayer:
 
 # ==============================================================================
 # Core Module 2: Short-term Memory Encoder
-# Based on AKT's dual-path Transformer structure
+
 # ==============================================================================
 class ShortTermEncoder:
     """
@@ -137,7 +137,7 @@ class ShortTermEncoder:
 
 class MonotonicMultiHeadAttention:
     """
-    Monotonic Attention Mechanism (from AKT)
+    Monotonic Attention Mechanism 
     
     Core Formula:
         scores = Q·K^T / sqrt(d_k)
