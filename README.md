@@ -244,5 +244,5 @@ This code is released for academic research purposes only.
 ## 🙏 Acknowledgments
 
 This work builds upon:
-- AKT (Ghosh et al., 2020) for monotonic attention mechanism
+- Tians
 - Educational psychology theories (Ausubel's Advance Organizer)
