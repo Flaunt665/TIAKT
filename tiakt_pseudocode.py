@@ -473,7 +473,7 @@ class TIAKT:
             Linear(256, 1)
         )
     
-    def forward(self, q_data, qa_data, target, pid_data=None):
+    def forward(self, q_data, qa_data, target,ms, pid_data=self, 
         """
         Forward Pass
         
@@ -515,6 +515,12 @@ class TIAKT:
         predictions = logits.reshape(-1)
         labels = target.reshape(-1)
         
+     
+        ms = input_ms.reshape(-1)
+        ms = sigmoid(ms)
+        ms = (ms - 0.75) / 5
+        preds = preds + ms
+        
         # Filter valid predictions (label > -0.9)
         mask = labels > -0.9
         masked_labels = labels[mask]
@@ -547,10 +553,10 @@ def train_tiakt(model, train_data, valid_data, params):
         
         # Batch training
         for batch in DataLoader(train_data, batch_size=params.batch_size, shuffle=True):
-            q_batch, qa_batch, pid_batch, target = batch
+            q_batch, qa_batch, pid_batch, target,ms = batch
             
             # Forward pass
-            loss, predictions, num_valid = model(q_batch, qa_batch, target, pid_batch)
+            loss, predictions, num_valid = model(q_batch, qa_batch, target,ms, pid_batch)
             
             # Backward pass
             optimizer.zero_grad()
@@ -596,9 +602,9 @@ def evaluate(model, test_data):
     
     with no_grad():
         for batch in DataLoader(test_data):
-            q_batch, qa_batch, pid_batch, target = batch
+            q_batch, qa_batch, pid_batch, target,ms= batch
             
-            _, predictions, _ = model(q_batch, qa_batch, target, pid_batch)
+            _, predictions, _ = model(q_batch, qa_batch, target,ms, pid_batch)
             
             # Collect predictions and labels
             mask = target.reshape(-1) > -0.9
